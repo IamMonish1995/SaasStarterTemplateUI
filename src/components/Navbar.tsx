@@ -20,6 +20,7 @@ import { ModeToggle } from "./theme-toggle-btn";
 import Link from "next/link";
 import { SignInButton, SignedOut, useUser } from "@clerk/nextjs";
 import { useAuth } from "#srchooks/use-auth.ts";
+import useStorage from "#srchooks/useStorage.ts";
 
 interface RouteProps {
   href: string;
@@ -48,8 +49,10 @@ const routeList: RouteProps[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const auth = useAuth() as any;
+  const { token } = useStorage();
+
   useEffect(() => {
-    let tempAuth = window.sessionStorage.getItem("token") != null;
+    let tempAuth = token != null;
     if (window) {
       auth.setIsAuthenticated(tempAuth);
     }
@@ -62,7 +65,7 @@ export const Navbar = () => {
           <NavigationMenuItem className="font-bold flex">
             <Link href="/" className="ml-2 font-bold text-xl flex">
               <LogoIcon />
-              Multi Instance SaaS
+              {process.env.NEXT_PUBLIC_APP_NAME}
             </Link>
           </NavigationMenuItem>
 

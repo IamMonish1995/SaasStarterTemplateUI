@@ -63,7 +63,7 @@ const AppHeader = ({
             <Link href="/" className="flex items-center gap-2 font-semibold">
               <Package2 className="h-6 w-6" />
               <span className="">
-                {/* {auth.organizationData?.organizationname} */}
+                {process.env.NEXT_PUBLIC_APP_NAME}
               </span>
             </Link>
             {/* <Button variant="outline" size="icon" className="ml-auto h-8 w-8">

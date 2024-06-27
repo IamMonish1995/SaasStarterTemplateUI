@@ -47,10 +47,7 @@ const AddInstanceForm = () => {
       if (auth.isLoading != true) {
         auth.setIsLoading(true);
         toast.promise(
-          createinstance({
-            data: { name: values.name, orgId: auth.organizationData._id },
-            token: auth.token,
-          }),
+          createinstance({ name: values.name, orgId: auth.organizationData._id }),
           {
             loading: "Loading...",
             success: (data: any) => <b>{data}</b>,

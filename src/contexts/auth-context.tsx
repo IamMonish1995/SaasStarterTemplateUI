@@ -4,6 +4,7 @@ import { login } from "#srcservices/authRequest.ts";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
+import useStorage from "#srchooks/useStorage.ts";
 
 export const AuthContext = createContext({ undefined });
 
@@ -11,13 +12,13 @@ export const AuthProvider = (props: any) => {
   const router = useRouter();
   const { children } = props;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState("");
   const [configData, setConfigData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { token, setToken, clearAll } = useStorage();
 
   const { isSignedIn, user } = useUser();
   const initialize = async () => {
-    if (isSignedIn && user && !isAuthenticated) {
+    if (isSignedIn && user && !token) {
       try {
         if (isLoading != true) {
           setIsLoading(true);
@@ -46,26 +47,25 @@ export const AuthProvider = (props: any) => {
   const signIn = async (email: any, password: any) => {
     return new Promise(async (resolve, reject) => {
       try {
-        // await login({ adminemail: email, adminpassword: password })
-        //   .then((res) => {
-        //     if (res.status == "success") {
-        //       window.sessionStorage.setItem("token", res.result);
-        //       setIsAuthenticated(true);
-        //       setToken(res.result);
-        //       router.push("/dashboard");
-        //       resolve(res.message);
-        //     } else {
-        //       reject(res.message);
-        //     }
+        // await login({
+        //   email: "monishbarse19@gmail.com",
+        //   username: "monishbarse19@gmail.com",
+        //   external_user_id: "1",
         // })
+        //   .then((res) => {
+        //     //     if (res.status == "success") {
+        //     //       setToken(res.result);
+        //     //       router.push("/dashboard");
+        //     //       resolve(res.message);
+        //     //     } else {
+        //     //       reject(res.message);
+        //     //     }
+        //   })
         // .catch((err) => {
         //   console.log(err);
         //   reject(err);
         // });
-        window.sessionStorage.setItem("token", "abcd");
-              setIsAuthenticated(true);
-              setToken("abcd");
-        router.push("/dashboard");
+        setToken("abcd");
         resolve("Success");
       } catch (err) {
         console.error(err);
@@ -76,14 +76,8 @@ export const AuthProvider = (props: any) => {
     // set to session storage
   };
 
-  const signUp = async ({ email, name, password }: any) => {
-    // create user
-  };
-
   const signOut = () => {
-    window.sessionStorage.clear();
-    setIsAuthenticated(false);
-    setToken("");
+    clearAll();
   };
 
   const value: any = {
@@ -94,10 +88,7 @@ export const AuthProvider = (props: any) => {
     isAuthenticated,
     setIsAuthenticated,
     signIn,
-    signUp,
     signOut,
-    token,
-    setToken,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
