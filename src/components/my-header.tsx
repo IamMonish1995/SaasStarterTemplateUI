@@ -50,11 +50,8 @@ const AppHeader = ({
 
   const navList = [
     { label: "Dashboard", path: "/dashboard", icon: LineChart },
-    { label: "Projects", path: "/projects", icon: BookCopy },
-    { label: "Instances", path: "/instances", icon: FolderKanban },
     { label: "Memberships", path: "/memberships", icon: ShoppingCart },
-    { label: "Transactions", path: "/transactions", icon: ArrowRightLeft },
-  ];
+    ];
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">

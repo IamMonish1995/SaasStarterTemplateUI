@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Loader } from "#srccomponents/Loader.tsx";
 export const metadata: Metadata = {
   title: "Template",
   description: "Template",
@@ -25,7 +26,10 @@ export default function App({ Component, pageProps }: any) {
       <ClerkProvider appearance={{ baseTheme: dark }}>
         <div className={inter.className}>
           <Toaster />
-          <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+          <AuthProvider>
+            <Loader />
+            {getLayout(<Component {...pageProps} />)}
+          </AuthProvider>
         </div>
       </ClerkProvider>
     </ThemeProvider>

@@ -48,15 +48,8 @@ const routeList: RouteProps[] = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const auth = useAuth() as any;
-  const { token } = useStorage();
+  const { isSignedIn } = useUser();
 
-  useEffect(() => {
-    let tempAuth = token != null;
-    if (window) {
-      auth.setIsAuthenticated(tempAuth);
-    }
-  }, []);
 
   return (
     <div className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
@@ -78,8 +71,7 @@ export const Navbar = () => {
                 <Menu
                   className="flex md:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
-                >
-                </Menu>
+                ></Menu>
               </SheetTrigger>
 
               <SheetContent side={"left"}>
@@ -99,7 +91,7 @@ export const Navbar = () => {
                       {label}
                     </Link>
                   ))}
-                  {auth.isAuthenticated ? (
+                  {isSignedIn ? (
                     <>
                       <Link
                         href="/dashboard"
@@ -148,7 +140,7 @@ export const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-            {auth.isAuthenticated ? (
+            {isSignedIn ? (
               <Link
                 href="/dashboard"
                 className={`border ${buttonVariants({ variant: "secondary" })}`}

@@ -13,8 +13,10 @@ import { Services } from "#srccomponents/Services.tsx";
 import { Sponsors } from "#srccomponents/Sponsors.tsx";
 import { Team } from "#srccomponents/Team.tsx";
 import { Testimonials } from "#srccomponents/Testimonials.tsx";
+import { useAuth } from "#srchooks/use-auth.ts";
 
 export default function Page() {
+  const auth = useAuth() as any;
   return (
     <>
       <Navbar />

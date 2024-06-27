@@ -11,7 +11,6 @@ export const AuthContext = createContext({ undefined });
 export const AuthProvider = (props: any) => {
   const router = useRouter();
   const { children } = props;
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [configData, setConfigData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { token, setToken, clearAll } = useStorage();
@@ -22,7 +21,7 @@ export const AuthProvider = (props: any) => {
       try {
         if (isLoading != true) {
           setIsLoading(true);
-          toast.promise(signIn("monishbarse9@gmail.com", "abcdefg"), {
+         await toast.promise(signIn("monishbarse9@gmail.com", "abcdefg"), {
             loading: "Loading...",
             success: (data: any) => <b>{data}</b>,
             error: (err: any) => <b>{err}</b>,
@@ -65,8 +64,8 @@ export const AuthProvider = (props: any) => {
         //   console.log(err);
         //   reject(err);
         // });
-        setToken("abcd");
-        resolve("Success");
+          setToken("abcd");
+          resolve("Success");
       } catch (err) {
         console.error(err);
         reject("Failed");
@@ -85,8 +84,6 @@ export const AuthProvider = (props: any) => {
     setConfigData,
     isLoading,
     setIsLoading,
-    isAuthenticated,
-    setIsAuthenticated,
     signIn,
     signOut,
   };
