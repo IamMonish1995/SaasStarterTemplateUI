@@ -1,13 +1,13 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "#public/globals.css";
-import { AuthProvider } from "#srccontexts/auth-context.tsx";
+import "./globals.css";
+import { AuthProvider } from "@/contexts/auth-context";
 const inter = Inter({ subsets: ["latin"] });
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
-import { Loader } from "#srccomponents/Loader.tsx";
+import { Loader } from "@/components/Loader";
 export const metadata: Metadata = {
   title: "Template",
   description: "Template",

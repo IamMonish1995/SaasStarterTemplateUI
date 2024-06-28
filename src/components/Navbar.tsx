@@ -19,8 +19,6 @@ import { LogoIcon } from "./Icons";
 import { ModeToggle } from "./theme-toggle-btn";
 import Link from "next/link";
 import { SignInButton, SignedOut, useUser } from "@clerk/nextjs";
-import { useAuth } from "#srchooks/use-auth.ts";
-import useStorage from "#srchooks/useStorage.ts";
 
 interface RouteProps {
   href: string;

@@ -1,4 +1,4 @@
-import { useAuth } from "#srchooks/use-auth.ts";
+import { useAuth } from "@/hooks/use-auth";
 
 export const Loader = () => {
   const auth = useAuth() as any;

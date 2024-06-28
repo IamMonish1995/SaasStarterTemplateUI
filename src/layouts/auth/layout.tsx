@@ -1,4 +1,4 @@
-import useStorage from "#srchooks/useStorage.ts";
+import useStorage from "@/hooks/useStorage";
 import { usePathname, useRouter } from "next/navigation";
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";

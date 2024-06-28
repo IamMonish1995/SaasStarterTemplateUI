@@ -35,7 +35,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/theme-toggle-btn";
-import { useAuth } from "#srchooks/use-auth.ts";
+import { useAuth } from "@/hooks/use-auth";
 import { usePathname, useRouter } from "next/navigation";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 

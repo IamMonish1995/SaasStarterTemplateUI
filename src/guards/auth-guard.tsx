@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import useStorage from "#srchooks/useStorage.ts";
+import useStorage from "@/hooks/useStorage";
 import { useUser } from "@clerk/nextjs";
 
 export const AuthGuard = (props: any) => {

@@ -1,4 +1,4 @@
-import useStorage from "#srchooks/useStorage.ts";
+import useStorage from "@/hooks/useStorage";
 import axios from "axios";
 let MAIN_URL = process.env.NEXT_PUBLIC_BACKEND_API;
 

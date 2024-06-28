@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { login } from "#srcservices/authRequest.ts";
+import { login } from "@/services/authRequest";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
-import useStorage from "#srchooks/useStorage.ts";
+import useStorage from "@/hooks/useStorage";
 
 export const AuthContext = createContext({ undefined });
 
