@@ -7,6 +7,7 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package.json ./
 COPY package-lock.json ./
+COPY env.local ./
 
 # Define build arguments
 ARG NEXT_PUBLIC_BACKEND_API

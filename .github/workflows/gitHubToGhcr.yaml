@@ -14,7 +14,10 @@ jobs:
         
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u IamMonish1995 --password-stdin
-        
+      
+      - name: Copy production environment variables
+        run: cp .env.local .env
+      
       - name: Build and tag Docker image
         run: docker build . --tag ghcr.io/iammonish1995/myapp:latest
         
