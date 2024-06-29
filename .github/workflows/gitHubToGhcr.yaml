@@ -16,7 +16,7 @@ jobs:
         run: echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u IamMonish1995 --password-stdin
         
       - name: Build and tag Docker image
-        run: docker build . --tag ghcr.io/IamMonish1995/myapp:latest
+        run: docker build . --tag ghcr.io/iammonish1995/myapp:latest
         
       - name: Push Docker image to GitHub Container Registry
         run: docker push ghcr.io/IamMonish1995/myapp:latest
