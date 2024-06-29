@@ -9,10 +9,10 @@ COPY package.json ./
 COPY package-lock.json ./
 
 # Define build arguments
-ARG CLERK_PUBLISHABLE_KEY
+ARG NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 # Set environment variables
-ENV CLERK_PUBLISHABLE_KEY=pk_test_c3VpdGFibGUtbW9jY2FzaW4tNzMuY2xlcmsuYWNjb3VudHMuZGV2JA
+ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_c3VpdGFibGUtbW9jY2FzaW4tNzMuY2xlcmsuYWNjb3VudHMuZGV2JA
 
 # Install dependencies
 RUN npm install
