@@ -17,14 +17,13 @@ jobs:
       
       - name: Build and tag Docker image
         env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-            NEXT_PUBLIC_BACKEND_API: ${{ secrets.NEXT_PUBLIC_BACKEND_API }} 
-            NEXT_PUBLIC_APP_NAME: ${{ secrets.NEXT_PUBLIC_APP_NAME }} 
-            NEXT_PUBLIC_JWT_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_JWT_SECRET_KEY }} 
-            NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }} 
+            BACKEND_API: ${{ secrets.NEXT_PUBLIC_BACKEND_API }} 
+            APP_NAME: ${{ secrets.NEXT_PUBLIC_APP_NAME }} 
+            JWT_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_JWT_SECRET_KEY }} 
+            CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }} 
             CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }} 
-            NEXT_PUBLIC_CLERK_SIGN_IN_URL: ${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }} 
-            NEXT_PUBLIC_CLERK_SIGN_UP_URL: ${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}
+            CLERK_SIGN_IN_URL: ${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }} 
+            CLERK_SIGN_UP_URL: ${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}
 
         run: docker build . --tag ghcr.io/iammonish1995/myapp:latest
         
