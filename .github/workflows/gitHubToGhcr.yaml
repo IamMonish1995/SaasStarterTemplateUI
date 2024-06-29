@@ -1,14 +1,22 @@
 name: Docker Image CI for GHCR
 
-on: push
+on: 
+  push:
+    branches:
+      - main
 
 jobs: 
   build_and_publish:
     runs-on: ubuntu-latest
     steps:
-      -uses:actions/checkout@v3
-      -name:Build and push the image
-       run: |
-          docker login --username IamMonish1995 --password ${{ secrets.GH_PAT }} ghcr.io
-          docker build . --tag ghcr.io/IamMonish1995/myapp:latest
-          docker push ghcr.io/IamMonish1995/myapp:latest
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u IamMonish1995 --password-stdin
+        
+      - name: Build and tag Docker image
+        run: docker build . --tag ghcr.io/IamMonish1995/myapp:latest
+        
+      - name: Push Docker image to GitHub Container Registry
+        run: docker push ghcr.io/IamMonish1995/myapp:latest
